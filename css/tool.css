@@ -471,3 +471,86 @@
   text-align:center;
   margin-bottom:28px;
   }
+
+/* ============================================================
+   PDF Compressor — specific options
+   ============================================================ */
+
+.compress-options{
+  display:grid;
+  gap:10px;
+  margin-bottom:20px;
+}
+@media(min-width:640px){
+  .compress-options{grid-template-columns:1fr 1fr;}
+}
+
+.compress-option{
+  position:relative;
+  display:block;
+  cursor:pointer;
+}
+.compress-option input{
+  position:absolute;
+  opacity:0;
+  pointer-events:none;
+}
+.compress-option-body{
+  display:block;
+  padding:14px 16px;
+  border:2px solid var(--line);
+  border-radius:12px;
+  background:#fff;
+  transition:all .18s var(--ease);
+}
+.compress-option-body strong{
+  display:block;
+  font-size:14.5px;
+  font-weight:700;
+  color:var(--ink);
+  margin-bottom:2px;
+}
+.compress-option-body small{
+  display:block;
+  font-size:12.5px;
+  color:var(--muted);
+  line-height:1.45;
+}
+.compress-option input:checked + .compress-option-body{
+  border-color:var(--brand);
+  background:var(--brand-tint);
+}
+.compress-option:hover .compress-option-body{
+  border-color:var(--brand-border);
+}
+.compress-option-target{
+  grid-column:1 / -1;
+}
+
+.tool-target{
+  padding:16px;
+  background:var(--paper-2);
+  border-radius:12px;
+  margin-bottom:8px;
+}
+.target-input-wrap{
+  position:relative;
+}
+.target-input-wrap .tool-select{
+  padding-right:60px;
+}
+.target-unit{
+  position:absolute;
+  right:16px;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:13px;
+  font-weight:700;
+  color:var(--muted);
+  pointer-events:none;
+}
+.target-hint{
+  margin-top:8px;
+  font-size:12.5px;
+  color:var(--muted);
+}
