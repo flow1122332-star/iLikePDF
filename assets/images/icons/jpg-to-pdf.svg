@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="orangeGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E67E22"/>
+      <stop offset="100%" stop-color="#C05B0E"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="52" y="52" width="408" height="408" rx="80" fill="url(#orangeGrad)"/>
+
+  <!-- Photo thumbnail (left) -->
+  <rect x="102" y="196" width="128" height="120" rx="10" fill="#FFFFFF"/>
+  <rect x="112" y="206" width="108" height="100" rx="6" fill="#F6C453"/>
+  <circle cx="140" cy="234" r="10" fill="#F5A623"/>
+  <path d="M 118 300 L 160 258 L 195 290 L 210 280 L 210 296 L 118 300 Z" fill="#7F8C8D"/>
+
+  <!-- Arrow -->
+  <path d="M 250 256 h 34 v -14 l 26 26 -26 26 v -14 h -34 z" fill="#FFFFFF"/>
+
+  <!-- PDF page (right) -->
+  <rect x="320" y="176" width="110" height="160" rx="10" fill="#FFFFFF"/>
+  <path d="M 400 176 v 30 h 30 z" fill="#C31C18"/>
+  <rect x="352" y="178" width="48" height="26" rx="5" fill="#E32B26"/>
+  <text x="360" y="197" font-family="Arial, sans-serif" font-size="18" font-weight="900" fill="#FFFFFF">PDF</text>
+  <rect x="336" y="230" width="78" height="8" rx="4" fill="#C31C18"/>
+  <rect x="336" y="250" width="78" height="8" rx="4" fill="#C31C18"/>
+  <rect x="336" y="270" width="78" height="8" rx="4" fill="#C31C18"/>
+  <rect x="336" y="290" width="78" height="8" rx="4" fill="#C31C18"/>
+  <rect x="336" y="310" width="50" height="8" rx="4" fill="#C31C18"/>
+</svg>
