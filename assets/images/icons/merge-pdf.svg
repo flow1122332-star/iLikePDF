@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="purpleGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9B4DE8"/>
+      <stop offset="100%" stop-color="#6B22C4"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="52" y="52" width="408" height="408" rx="80" fill="url(#purpleGrad)"/>
+
+  <!-- Back document (left) -->
+  <path d="M 140 150 h 130 l 30 30 v 200 a 14 14 0 0 1 -14 14 h -146 a 14 14 0 0 1 -14 -14 v -216 a 14 14 0 0 1 14 -14 z" fill="#FFFFFF"/>
+  <rect x="160" y="200" width="110" height="10" rx="5" fill="#C9B6E8"/>
+  <rect x="160" y="228" width="110" height="10" rx="5" fill="#C9B6E8"/>
+  <rect x="160" y="256" width="110" height="10" rx="5" fill="#C9B6E8"/>
+  <rect x="160" y="284" width="110" height="10" rx="5" fill="#C9B6E8"/>
+  <rect x="160" y="312" width="110" height="10" rx="5" fill="#C9B6E8"/>
+  <rect x="160" y="340" width="70" height="10" rx="5" fill="#C9B6E8"/>
+
+  <!-- Front document (right) -->
+  <path d="M 250 190 h 130 l 30 30 v 200 a 14 14 0 0 1 -14 14 h -146 a 14 14 0 0 1 -14 -14 v -216 a 14 14 0 0 1 14 -14 z" fill="#FFFFFF" opacity="0.95"/>
+  <rect x="270" y="240" width="110" height="10" rx="5" fill="#C9B6E8"/>
+  <rect x="270" y="268" width="110" height="10" rx="5" fill="#C9B6E8"/>
+  <rect x="270" y="296" width="110" height="10" rx="5" fill="#C9B6E8"/>
+  <rect x="270" y="324" width="110" height="10" rx="5" fill="#C9B6E8"/>
+  <rect x="270" y="352" width="70" height="10" rx="5" fill="#C9B6E8"/>
+
+  <!-- Plus overlay -->
+  <circle cx="256" cy="286" r="46" fill="#FFFFFF"/>
+  <circle cx="256" cy="286" r="36" fill="#7B2CD6"/>
+  <rect x="248" y="266" width="16" height="40" rx="4" fill="#FFFFFF"/>
+  <rect x="236" y="278" width="40" height="16" rx="4" fill="#FFFFFF"/>
+</svg>
