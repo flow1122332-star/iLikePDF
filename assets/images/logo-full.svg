@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" width="1200" height="300">
+  <text
+    x="30"
+    y="230"
+    font-family="'Arial Black', 'Helvetica Neue', Helvetica, Arial, sans-serif"
+    font-size="240"
+    font-weight="900"
+    letter-spacing="-6"
+    textLength="1160"
+    lengthAdjust="spacingAndGlyphs">
+
+    <tspan fill="#1A5CFF">i</tspan>
+    <tspan fill="#1A5CFF">L</tspan>
+    <tspan fill="#A020F0">i</tspan>
+    <tspan fill="#E2231A">k</tspan>
+    <tspan fill="#22B14C">e</tspan>
+    <tspan fill="#0A1E3F">PDF</tspan>
+  </text>
+</svg>
