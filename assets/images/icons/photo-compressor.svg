@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="tealGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#149A8B"/>
+      <stop offset="100%" stop-color="#0D6E62"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="52" y="52" width="408" height="408" rx="80" fill="url(#tealGrad)"/>
+
+  <!-- Photo frame -->
+  <rect x="120" y="150" width="272" height="200" rx="16" fill="#FFFFFF"/>
+  <rect x="138" y="168" width="236" height="164" rx="8" fill="#7BC9E0"/>
+
+  <!-- Sky elements -->
+  <ellipse cx="180" cy="210" rx="30" ry="14" fill="#FFFFFF"/>
+  <circle cx="326" cy="204" r="16" fill="#F5C842"/>
+
+  <!-- Mountains -->
+  <path d="M 138 332 L 220 250 L 260 290 L 310 240 L 374 332 Z" fill="#5CBF5C"/>
+
+  <!-- Big white down arrow overlay -->
+  <path d="M 240 210 h 32 v 60 h 30 l -46 56 -46 -56 h 30 z" fill="#FFFFFF"/>
+
+  <!-- KB label -->
+  <text x="290" y="350" font-family="Arial, sans-serif" font-size="52" font-weight="900" fill="#FFFFFF">KB</text>
+</svg>
