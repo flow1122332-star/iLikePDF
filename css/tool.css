@@ -675,3 +675,50 @@
   .merge-item-icon{width:34px;height:34px;font-size:9px}
   .merge-item-name{font-size:13px}
 }
+
+/* ============================================================
+   JPG to PDF — image thumbnails
+   ============================================================ */
+
+.merge-item-thumb{
+  flex:none;
+  width:56px;
+  height:56px;
+  border-radius:10px;
+  overflow:hidden;
+  background:var(--paper-2);
+  display:grid;
+  place-items:center;
+}
+.merge-item-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.merge-item-actions{
+  display:flex;
+  gap:4px;
+  flex:none;
+}
+.merge-item-action{
+  width:32px;
+  height:32px;
+  border-radius:8px;
+  display:grid;
+  place-items:center;
+  color:var(--muted);
+  border:1px solid transparent;
+  transition:all .16s var(--ease);
+}
+.merge-item-action:hover{
+  color:var(--brand);
+  background:var(--brand-tint);
+  border-color:var(--brand-border);
+}
+
+@media(max-width:520px){
+  .merge-item-thumb{width:44px;height:44px}
+  .merge-item-action{width:28px;height:28px}
+}
