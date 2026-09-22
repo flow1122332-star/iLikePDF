@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="blueGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4A90E2"/>
+      <stop offset="100%" stop-color="#1E5FB5"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="52" y="52" width="408" height="408" rx="80" fill="url(#blueGrad)"/>
+
+  <!-- PDF doc (left) -->
+  <rect x="120" y="176" width="106" height="160" rx="10" fill="#FFFFFF"/>
+  <path d="M 196 176 v 30 h 30 z" fill="#4A90E2"/>
+  <text x="138" y="222" font-family="Arial, sans-serif" font-size="26" font-weight="900" fill="#1E5FB5">PDF</text>
+  <rect x="136" y="240" width="74" height="8" rx="4" fill="#4A90E2"/>
+  <rect x="136" y="258" width="74" height="8" rx="4" fill="#4A90E2"/>
+  <rect x="136" y="276" width="74" height="8" rx="4" fill="#4A90E2"/>
+  <rect x="136" y="294" width="74" height="8" rx="4" fill="#4A90E2"/>
+  <rect x="136" y="312" width="50" height="8" rx="4" fill="#4A90E2"/>
+
+  <!-- Arrow -->
+  <path d="M 244 256 h 20 v -12 l 22 22 -22 22 v -12 h -20 z" fill="#FFFFFF"/>
+
+  <!-- Word doc (right) -->
+  <rect x="300" y="176" width="106" height="160" rx="10" fill="#FFFFFF"/>
+  <path d="M 376 176 v 30 h 30 z" fill="#1E5FB5"/>
+  <text x="322" y="238" font-family="Arial, sans-serif" font-size="42" font-weight="900" fill="#1E5FB5">W</text>
+  <rect x="316" y="260" width="74" height="8" rx="4" fill="#1E5FB5"/>
+  <rect x="316" y="278" width="74" height="8" rx="4" fill="#1E5FB5"/>
+  <rect x="316" y="296" width="74" height="8" rx="4" fill="#1E5FB5"/>
+  <rect x="316" y="314" width="50" height="8" rx="4" fill="#1E5FB5"/>
+</svg>
