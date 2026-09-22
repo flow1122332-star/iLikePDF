@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PDF to Word — Convert PDF to DOCX Free | iLikePDF</title>
+<meta name="description" content="Convert PDF files into editable Word documents. Free, fast and private — runs entirely in your browser.">
+<meta name="theme-color" content="#FFFFFF">
+
+<link rel="icon" type="image/png" href="assets/images/logo-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/tool.css">
+
+<!-- PDF.js for reading + docx for creating Word -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/docx/8.5.0/index.umd.js"></script>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="header">
+  <div class="container header-inner">
+
+    <a class="logo" href="index.html" aria-label="iLikePDF home">
+      <img class="logo-mark" src="assets/images/logo-icon.png" alt="" width="34" height="34">
+      <span class="logo-name">iLike<b>PDF</b></span>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <div class="nav-dropdown">
+        <button class="nav-link nav-drop-trigger" type="button" aria-haspopup="true" aria-expanded="false">
+          <span class="drop-grid" aria-hidden="true">
+            <i></i><i></i><i></i><i></i>
+          </span>
+          Tools
+        </button>
+        <div class="nav-drop" role="menu">
+          <a href="compress-pdf.html">PDF Compressor</a>
+          <a href="jpg-to-pdf.html">JPG to PDF</a>
+          <a href="pdf-to-word.html">PDF to Word</a>
+          <a href="word-to-pdf.html">Word to PDF</a>
+          <a href="merge-pdf.html">Merge PDF</a>
+          <a href="photo-compressor.html">Photo Compressor</a>
+        </div>
+      </div>
+      <a class="nav-link" href="index.html#tools">All Tools</a>
+      <a class="nav-link" href="#">Pricing</a>
+    </nav>
+
+    <div class="header-actions">
+      <a class="btn btn-ghost btn-sm" href="#">Log In</a>
+      <a class="btn btn-primary btn-sm" href="#">Sign Up Free</a>
+    </div>
+
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="mobile-nav" id="mobileNav">
+    <div class="container mobile-nav-inner">
+      <a href="index.html#tools">All Tools</a>
+      <a href="#">Pricing</a>
+      <a href="#">About</a>
+      <div class="mobile-actions">
+        <a class="btn btn-outline" href="#">Log In</a>
+        <a class="btn btn-primary" href="#">Sign Up Free</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ================= TOOL PAGE HEAD ================= -->
+<section class="tool-page-head">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <span>PDF to Word</span>
+    </nav>
+
+    <h1 class="tool-page-title">PDF to Word</h1>
+    <p class="tool-page-sub">
+      Convert your PDF into an editable Word document. Preserves text,
+      paragraphs and page breaks — free and 100% private.
+    </p>
+  </div>
+</section>
+
+<!-- ================= TOOL UI ================= -->
+<section class="tool-ui-section">
+  <div class="container">
+
+    <!-- Dropzone -->
+    <div class="tool-dropzone" id="dropzone">
+      <div class="tool-dropzone-icon" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 16V4"/>
+          <path d="m7.5 8.5 4.5-4.5 4.5 4.5"/>
+          <path d="M4 16v2.5A1.5 1.5 0 0 0 5.5 20h13a1.5 1.5 0 0 0 1.5-1.5V16"/>
+        </svg>
+      </div>
+      <p class="tool-dropzone-title">Drop your PDF here</p>
+      <p class="tool-dropzone-sub">or</p>
+      <button type="button" class="btn btn-primary" id="chooseFilesBtn">
+        Choose File
+      </button>
+      <input type="file" id="fileInput" accept="application/pdf,.pdf" hidden>
+      <p class="tool-dropzone-note">PDF only · Max 50 MB</p>
+    </div>
+
+    <!-- Workspace -->
+    <div class="tool-workspace" id="workspace" hidden>
+      <div class="tool-workspace-head">
+        <div>
+          <h2 class="tool-workspace-title" id="fileName">document.pdf</h2>
+          <p class="tool-workspace-meta" id="fileMeta">2.4 MB · 12 pages</p>
+        </div>
+        <button type="button" class="tool-reset" id="resetBtn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 12a9 9 0 1 0 3-6.7"/>
+            <path d="M3 4v5h5"/>
+          </svg>
+          Change file
+        </button>
+      </div>
+
+      <div class="tool-options">
+        <label class="tool-label">Conversion options</label>
+
+        <label class="compress-option compress-option-target" style="display:flex;align-items:center;gap:12px;padding:14px 16px;">
+          <input type="checkbox" id="preserveBreaks" checked>
+          <span style="flex:1">
+            <strong style="display:block;font-size:14.5px;font-weight:700;color:var(--ink);margin-bottom:2px;">Insert page breaks</strong>
+            <small style="display:block;font-size:12.5px;color:var(--muted);">Start each PDF page on a new Word page</small>
+          </span>
+        </label>
+
+        <label class="compress-option compress-option-target" style="display:flex;align-items:center;gap:12px;padding:14px 16px;">
+          <input type="checkbox" id="detectHeadings" checked>
+          <span style="flex:1">
+            <strong style="display:block;font-size:14.5px;font-weight:700;color:var(--ink);margin-bottom:2px;">Detect headings</strong>
+            <small style="display:block;font-size:12.5px;color:var(--muted);">Try to detect titles and headings by font size</small>
+          </span>
+        </label>
+      </div>
+
+      <button type="button" class="btn btn-primary tool-action-btn" id="convertBtn">
+        Convert to Word
+      </button>
+    </div>
+
+    <!-- Result -->
+    <div class="tool-result" id="result" hidden>
+      <div class="tool-result-icon" aria-hidden="true">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 6 9 17l-5-5"/>
+        </svg>
+      </div>
+      <h3 class="tool-result-title">Done! Your Word document is ready.</h3>
+      <div class="tool-result-stats">
+        <div class="tool-stat">
+          <span class="tool-stat-label">Pages</span>
+          <span class="tool-stat-value" id="pagesUsed">—</span>
+        </div>
+        <div class="tool-stat">
+          <span class="tool-stat-label">Words</span>
+          <span class="tool-stat-value" id="wordsCount">—</span>
+        </div>
+        <div class="tool-stat tool-stat-saved">
+          <span class="tool-stat-label">File size</span>
+          <span class="tool-stat-value tool-stat-value-good" id="docxSize">—</span>
+        </div>
+      </div>
+
+      <div class="tool-result-actions">
+        <a class="btn btn-primary" id="downloadBtn" download>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 4v12"/>
+            <path d="m6.5 11 5.5 5 5.5-5"/>
+            <path d="M5 20h14"/>
+          </svg>
+          Download Word (.docx)
+        </a>
+        <button type="button" class="btn btn-outline" id="resetFromResult">
+          Convert another
+        </button>
+      </div>
+    </div>
+
+    <!-- Loading -->
+    <div class="tool-loading" id="loading" hidden>
+      <div class="tool-spinner" aria-hidden="true"></div>
+      <p id="loadingText">Reading your PDF…</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= INFO ================= -->
+<section class="tool-info">
+  <div class="container narrow">
+
+    <h2 class="tool-info-title">How to convert PDF to Word</h2>
+    <ol class="tool-steps">
+      <li>Drop or choose your PDF file above.</li>
+      <li>Choose your conversion options (page breaks, headings).</li>
+      <li>Click <strong>Convert to Word</strong> and wait a few seconds.</li>
+      <li>Download your editable .docx file.</li>
+    </ol>
+
+    <h3 class="tool-info-subtitle">Why use iLikePDF PDF to Word?</h3>
+    <div class="tool-benefits">
+      <div class="tool-benefit">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 6 9 17l-5-5"/>
+        </svg>
+        <div>
+          <strong>Fully editable output</strong>
+          <p>Get a real .docx file you can edit in Word, Google Docs or Pages.</p>
+        </div>
+      </div>
+      <div class="tool-benefit">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 6 9 17l-5-5"/>
+        </svg>
+        <div>
+          <strong>Preserves structure</strong>
+          <p>Paragraphs, page breaks and headings detected automatically.</p>
+        </div>
+      </div>
+      <div class="tool-benefit">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 6 9 17l-5-5"/>
+        </svg>
+        <div>
+          <strong>100% private</strong>
+          <p>Your PDF is processed in your browser — never uploaded to any server.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= RELATED TOOLS ================= -->
+<section class="tool-related">
+  <div class="container">
+    <h2 class="tool-related-title">Other tools you might need</h2>
+    <div class="tool-grid">
+
+      <a class="tool-card" href="word-to-pdf.html">
+        <img class="tool-icon" src="assets/images/icons/word-to-pdf.png" alt="" width="52" height="52">
+        <span class="tool-text">
+          <strong>Word to PDF</strong>
+          <small>Turn DOC and DOCX files into clean PDFs</small>
+        </span>
+        <span class="tool-arrow" aria-hidden="true">→</span>
+      </a>
+
+      <a class="tool-card" href="compress-pdf.html">
+        <img class="tool-icon" src="assets/images/icons/compress-pdf.png" alt="" width="52" height="52">
+        <span class="tool-text">
+          <strong>PDF Compressor</strong>
+          <small>Reduce PDF file size — including 100 KB target</small>
+        </span>
+        <span class="tool-arrow" aria-hidden="true">→</span>
+      </a>
+
+      <a class="tool-card" href="merge-pdf.html">
+        <img class="tool-icon" src="assets/images/icons/merge-pdf.png" alt="" width="52" height="52">
+        <span class="tool-text">
+          <strong>Merge PDF</strong>
+          <small>Combine multiple PDFs into one document</small>
+        </span>
+        <span class="tool-arrow" aria-hidden="true">→</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="container">
+
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="logo" href="index.html">
+          <img class="logo-mark" src="assets/images/logo-icon.png" alt="" width="32" height="32">
+          <span class="logo-name">iLike<b>PDF</b></span>
+        </a>
+        <p>We make PDF easy.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Tools</h4>
+        <ul>
+          <li><a href="compress-pdf.html">PDF Compressor</a></li>
+          <li><a href="jpg-to-pdf.html">JPG to PDF</a></li>
+          <li><a href="pdf-to-word.html">PDF to Word</a></li>
+          <li><a href="word-to-pdf.html">Word to PDF</a></li>
+          <li><a href="merge-pdf.html">Merge PDF</a></li>
+          <li><a href="photo-compressor.html">Photo Compressor</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+          <li><a href="#">GDPR</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">© <span id="year">2025</span> iLikePDF — All rights reserved.</p>
+    </div>
+
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/tools/pdf-to-word.js"></script>
+</body>
+</html>
